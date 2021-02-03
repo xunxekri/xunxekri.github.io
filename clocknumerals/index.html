@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>ClockConvert</title>
+    <meta charset="utf-8">
+    <style></style>
+  </head>
+  <body>
+    <input type="number" min="0" id="in" value="0" />
+    <span id="mid"></span>
+    <br />
+    <div id="out"></div>
+    <script>
+      Promise.all('0123456789abcdef'.split('').map(async _ => {
+        return await fetch(`imgs/${_}.png`).then(it => it.blob()).then(it => URL.createObjectURL(it));
+      })).then(_ => window.uris = _);
+      const $ = _ => document.querySelector(_);
+      const run = () => {
+        let num = +$('#in').value;
+        let hex = num.toString(16);
+        $('#mid').innerHTML = hex;
+        $('#out').innerHTML = "";
+        hex.split('').forEach(_ => {
+          let i = new Image();
+          i.src = uris[parseInt(_, 16)];
+          $('#out').appendChild(i);
+        });
+      };
+      $('#in').addEventListener('change', run);
+      $('#in').addEventListener('keyup', run);
+      setTimeout(run, 2000);
+    </script>
+  </body>
+</html>
