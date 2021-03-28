@@ -1,0 +1,122 @@
+:root {
+  --main-bg: #111;
+  --main-bg-translucent: rgba(17, 17, 17, 0.6);
+  --main-fg: hotpink;
+  --main-mg: white;
+  --gradient-bg: linear-gradient(135deg, rgba(255, 127, 127, 1.0), rgba(127, 127, 255, 1.0));
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: var(--gradient-bg);
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+}
+
+main, aside {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  padding: 2em;
+  box-sizing: border-box;
+  transition: transform 1s ease;
+}
+
+.hide {
+  transform: translate(0, -100vh);
+}
+
+.init {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+textarea {
+  width: 60%;
+  height: 90%;
+  border: 2px solid var(--main-fg);
+  color: var(--main-fg);
+  background: var(--main-bg-translucent);
+  border-radius: 0.5em;
+  padding: 1em;
+  -ms-overflow-style: none;
+  scrollbar-width: none;  
+}
+
+button {
+  width: 10em;
+  height: 4em;
+  border: 2px solid var(--main-fg);
+  color: var(--main-fg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--main-bg-translucent);
+  border-radius: 0.5em;
+}
+
+.split, .end {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.split {
+  justify-content: space-between;
+}
+
+.end {
+  justify-content: flex-end;
+}
+
+img {
+  height: 85%;
+  width: auto;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-text {
+  color: var(--main-mg);
+}
+
+progress {
+  border: 2px solid var(--main-fg);
+}
+
+progress, progress::-webkit-progress-bar {
+  background: var(--main-bg-translucent);
+}
+
+progress::-webkit-progress-value,
+progress::-moz-progress-bar {
+  background-color: var(--main-fg);
+}
+
+img {
+  border-radius: 2em;
+}
