@@ -1,12 +1,15 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>ClockConvert</title>
-    <meta charset="utf-8">
+    <title>Clock Numeral Conversion</title>
+    <meta charset="utf-8" />
     <style></style>
   </head>
   <body>
-    <input type="number" min="0" id="in" value="0" />
+    <input type="text" min="0" pattern="[0-9a-fA-F]+" id="in" value="0" />
+    <label for="chx">Hex:</label>
+    <input type="checkbox" id="chx" name="chx" />
+    <br />
     <span id="mid"></span>
     <br />
     <div id="out"></div>
@@ -16,8 +19,13 @@
       })).then(_ => window.uris = _);
       const $ = _ => document.querySelector(_);
       const run = () => {
-        let num = +$('#in').value;
-        let hex = num.toString(16);
+        let hex;
+        if($('#chx').checked) {
+          hex = $('#in').value;
+        } else {
+          let num = BigInt($('#in').value);
+          hex = num.toString(16);
+        }
         $('#mid').innerHTML = hex;
         $('#out').innerHTML = "";
         hex.split('').forEach(_ => {
@@ -28,6 +36,7 @@
       };
       $('#in').addEventListener('change', run);
       $('#in').addEventListener('keyup', run);
+      $('#chx').addEventListener('click', run);
       setTimeout(run, 2000);
     </script>
   </body>
