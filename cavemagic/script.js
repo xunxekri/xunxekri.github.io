@@ -28,11 +28,11 @@ const start = async () => {
   for(let i = 0; i < cardList.length; i++) {
     $('.done').innerHTML = 1+i;
     $('.progress').setAttribute('value', 1+i);
-    $('.card-name').innerHTML = cardList[i];
 
     let card = cardList[i];
     card = card.replace(/^\d+x? /, ''); //no english card starts with a number, so this must be a count
     const set = (card.match(/\(([a-zA-Z0-9]{3})\)/) ?? [])[1];
+    $('.card-name').innerHTML = card;
 
     let URI = baseAPI_URI;
     URI += `fuzzy=${card}`;
