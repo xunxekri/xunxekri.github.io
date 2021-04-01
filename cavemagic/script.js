@@ -2,7 +2,7 @@ const baseAPI_URI = "https://api.scryfall.com/cards/named?";
 const $ = _ => document.querySelector(_);
 const wait = () => new Promise(resolve => setTimeout(resolve, 100));
 const getImage = scryfallCardObject => {
-  if(scryfallCardObject.card_faces) {
+  if(scryfallCardObject.card_faces && scryfallCardObject.card_faces[0].image_uris) {
     return scryfallCardObject.card_faces[0].image_uris.normal;
     //not willing to bother with dfcs
   } else {
