@@ -2,7 +2,7 @@ const baseAPI_URI = "https://api.scryfall.com/cards/named?";
 const $ = _ => document.querySelector(_);
 const wait = () => new Promise(resolve => setTimeout(resolve, 100));
 const getImage = scryfallCardObject => {
-  if(scryfallCardObject.card_faces && scryfallCardObject.card_faces[0].image_uris) {
+  if(scryfallCardObject.card_faces && scryfallCardObject.card_faces[0] && scryfallCardObject.card_faces[0].image_uris) {
     return scryfallCardObject.card_faces[0].image_uris.normal;
     //not willing to bother with dfcs
   } else {
@@ -28,6 +28,7 @@ const start = async () => {
   for(let i = 0; i < cardList.length; i++) {
     $('.done').innerHTML = 1+i;
     $('.progress').setAttribute('value', 1+i);
+    $('.card-name').innerHTML = cardList[i];
 
     let card = cardList[i];
     card = card.replace(/^\d+ /, ''); //no english card starts with a number, so this must be a count
