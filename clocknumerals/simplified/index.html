@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Clock Numeral Conversion</title>
+    <meta charset="utf-8" />
+    <style>
+    img {
+      width: 150px;
+      height: 150px;
+    }
+    /*#out {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      -ms-overflow-style: none;
+      scrollbar-width: none; 
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }*/
+    </style>
+  </head>
+  <body>
+    <input type="text" min="0" pattern="[0-9a-fA-F]+" id="in" value="0" />
+    <label for="chx">Hex:</label>
+    <input type="checkbox" id="chx" name="chx" />
+    <br />
+    <span id="mid"></span>
+    <br />
+    <div id="out"></div>
+    <script>
+      Promise.all('0123456789abcdef'.split('').map(async _ => {
+        return await fetch(`imgs/${_}.svg`).then(it => it.blob()).then(it => URL.createObjectURL(it));
+      })).then(_ => window.uris = _);
+      const $ = _ => document.querySelector(_);
+      const run = () => {
+        let hex;
+        if($('#chx').checked) {
+          hex = $('#in').value;
+        } else {
+          let num = BigInt($('#in').value);
+          hex = num.toString(16);
+        }
+        $('#mid').innerHTML = hex;
+        $('#out').innerHTML = "";
+        hex.split('').forEach(_ => {
+          let i = new Image();
+          i.src = uris[parseInt(_, 16)];
+          $('#out').appendChild(i);
+        });
+      };
+      $('#in').addEventListener('change', run);
+      $('#in').addEventListener('keyup', run);
+      $('#chx').addEventListener('click', run);
+      setTimeout(run, 2000);
+    </script>
+  </body>
+</html>

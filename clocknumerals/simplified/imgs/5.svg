@@ -1,0 +1,16 @@
+<!-- hotpink: #ff69b4, hsl(330,100,71) -->
+<svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs><linearGradient id="pink" gradientTransform="rotate(75)">
+    <stop offset="0%"  stop-color="#FF6BE6" />
+    <stop offset="100%" stop-color="#FF6B84" />
+  </linearGradient></defs>
+  <mask id="content"><rect x="0" y="0" width="10" height="10" fill="black" />
+
+    <line x1="5" x2="5" y1="1" y2="9" stroke="white" stroke-width="0.2" stroke-linecap="round" />
+    <line x1="1" x2="9" y1="5" y2="5" stroke="white" stroke-width="0.2" stroke-linecap="round" />
+    <circle cx="7" cy="7" fill="white" r="0.2" />
+    <circle cx="3" cy="3" fill="white" r="0.2" />
+
+  </mask>
+  <rect x="0" y="0" width="10" height="10" fill="url('#pink')" mask="url(#content)" />
+</svg>
