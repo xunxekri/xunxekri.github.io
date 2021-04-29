@@ -40,12 +40,12 @@ const start = async () => {
     console.log(URI);
 
     const scryfallCardObject = await fetch(URI).then(_ => _.json());
-    const {name} = scryfallCardObject;
+    const {name, oracle} = scryfallCardObject;
     const imageURI = getImage(scryfallCardObject);
     const scryfallURI = scryfallCardObject.scryfall_uri;
     let inExport = false;
 
-    cardObjects.push({name, imageURI, scryfallURI, inExport});
+    cardObjects.push({name, oracle, imageURI, scryfallURI, inExport});
     await wait();
   }
   console.table(cardObjects);
@@ -54,12 +54,14 @@ const start = async () => {
   const showImage = () => {
     $('.img').setAttribute('src', cardObjects[currentIndex].imageURI);
     $('.scrylink').setAttribute('href', cardObjects[currentIndex].scryfallURI);
+    $('.img').setAttribute('title', cardObjects[currentIndex].oracle);
+    $('.index').innerText = `${currentIndex+1} / ${cardObjects.length}`;
   };
 
   const prev = () => {
     if(currentIndex == 0) return;
     currentIndex--;
-    showImage;
+    showImage();
   };
 
   const next = () => {
@@ -90,3 +92,10 @@ const start = async () => {
 }
 
 $('.start').onclick = start;
+
+const startAnim = Date.now();
+
+setInterval(() => {
+  const oofset = Date.now() - startAnim;
+  document.documentElement.style.setProperty('--bg-rotation', (Math.round(oofset / 500 + 70) % 360) + 'deg');
+})
