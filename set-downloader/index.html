@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Set Downloader</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="https://www.unpkg.com/jszip@3.10.1/dist/jszip.min.js"></script>
+    <script defer src="main.js"></script>
+  </head>
+  <body>
+  	<progress id="progress"></progress>
+   	<main>
+	  	<input list="sets" id="chosen-set" type="text" placeholder="Set"/>
+	  	<datalist id="sets"></datalist>
+	  	<select id="image-type">
+		  	<option value="png">PNG</option>
+		  	<option value="small">Small</option>
+		  	<option value="normal">Normal</option>
+		  	<option value="large">Large</option>
+		  	<option value="art_crop">Art Crop</option>
+		  	<option value="border_crop">Border Crop</option>
+	  	</select>
+	  	<button id="download">Download</button>
+	</main>
+	<div id="images"></div>
+  </body>
+</html>
