@@ -19,6 +19,7 @@ img {
   align-content: space-around;
   flex-direction: row;	
   flex-wrap: wrap;
+  padding-bottom: 7em;
 }
 
 main {
@@ -55,19 +56,24 @@ html, body {
   margin: 0;
 }
 
-input[type=text], button, select, progress {
+input[type=text], button, select, progress, .check-cover {
   appearance: none;
   background-color: rgba(41, 41, 41, 0.3);
   border: none;
   color: white;
   font-size: 1.1rem;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
 
-button, select {
+button, select, .check-cover {
 	padding: 1em;
+	user-select: none;
+}
+
+button, select {
+	text-align: center;
 }
 
 input[type=text] {
